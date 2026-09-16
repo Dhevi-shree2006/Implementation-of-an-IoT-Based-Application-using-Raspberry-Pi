@@ -27,7 +27,7 @@ To implement an IoT-based environmental monitoring application using Raspberry P
 
 ---
 
-**To upload Wokwi circuit diagram**
+<img width="663" height="400" alt="image" src="https://github.com/user-attachments/assets/bfebc70d-25b4-4b4a-a7e1-2a02c09bf423" />
 
 ---
 
@@ -134,9 +134,22 @@ The LED is used as a local status indicator. It turns ON when the measured tempe
 ---
 
 # Program
+```
+from machine import Pin
+from utime import sleep
+
+sleep(0.01) # Wait for USB to connect
+print("Hello, Pi Pico!")
+
+led = Pin(5, Pin.OUT)
+while True:
+  led.toggle()
+  sleep(0.5)
+```
 
 
 # Observation
+<img width="1576" height="781" alt="image" src="https://github.com/user-attachments/assets/1a8c784b-c231-4748-b974-46f7ce50a39b" />
 
 
 
