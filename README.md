@@ -139,24 +139,17 @@ from machine import Pin
 from time import sleep
 import dht
 
-# LED connected to GP14
 led = Pin(14, Pin.OUT)
-
-# DHT22 connected to GP15
 sensor = dht.DHT22(Pin(15))
 
 while True:
     sensor.measure()
-
     temperature = sensor.temperature()
     humidity = sensor.humidity()
 
     print("Temperature:", temperature, "°C")
     print("Humidity:", humidity, "%")
-    print("--------------------")
-
     led.toggle()
-
     sleep(2)
 ```
 
