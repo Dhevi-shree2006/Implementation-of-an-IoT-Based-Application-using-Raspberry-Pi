@@ -136,20 +136,34 @@ The LED is used as a local status indicator. It turns ON when the measured tempe
 # Program
 ```
 from machine import Pin
-from utime import sleep
+from time import sleep
+import dht
 
-sleep(0.01) # Wait for USB to connect
-print("Hello, Pi Pico!")
+# LED connected to GP14
+led = Pin(14, Pin.OUT)
 
-led = Pin(5, Pin.OUT)
+# DHT22 connected to GP15
+sensor = dht.DHT22(Pin(15))
+
 while True:
-  led.toggle()
-  sleep(0.5)
+    sensor.measure()
+
+    temperature = sensor.temperature()
+    humidity = sensor.humidity()
+
+    print("Temperature:", temperature, "°C")
+    print("Humidity:", humidity, "%")
+    print("--------------------")
+
+    led.toggle()
+
+    sleep(2)
 ```
 
 
 # Observation
-<img width="1576" height="781" alt="image" src="https://github.com/user-attachments/assets/1a8c784b-c231-4748-b974-46f7ce50a39b" />
+<img width="938" height="965" alt="image" src="https://github.com/user-attachments/assets/855793cb-d414-4dc1-a49e-c18bee2dbbb6" />
+
 
 
 
